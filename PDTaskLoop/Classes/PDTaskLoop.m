@@ -188,7 +188,7 @@
                                                       block:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         if (strongSelf) {
-            [strongSelf tick];
+            [strongSelf executeTasks];
         }
     }];
     
@@ -205,7 +205,7 @@
 }
 
 #pragma mark - Private Methods
-- (void)tick {
+- (void)executeTasks {
     if (!self.taskQueue.count) {
         return;
     }
