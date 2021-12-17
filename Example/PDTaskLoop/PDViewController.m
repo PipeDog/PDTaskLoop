@@ -7,6 +7,7 @@
 //
 
 #import "PDViewController.h"
+#import <PDTaskLoop.h>
 
 @interface PDViewController ()
 
@@ -18,6 +19,24 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+    [self addTasks];
+}
+
+- (void)addTasks {
+    NSLog(@"=====================\n\n");
+    
+    PDTaskLoop *taskLoop = [PDTaskLoop taskLoopForName:@"TestTaskLoop"];
+    
+    for (int i = 0; i < 10; i++) {
+        [taskLoop addTask:^{
+            NSLog(@">>>>> i = %d", i);
+        }];
+    }
+        
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self addTasks];
+    });
 }
 
 - (void)didReceiveMemoryWarning

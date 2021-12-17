@@ -7,12 +7,18 @@
 //
 
 #import "PDAppDelegate.h"
+#import <PDTaskLoop.h>
 
 @implementation PDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    PDTaskLoop *taskLoop = [[PDTaskLoop alloc] initWithMode:PDTaskLoopModeRunAllReverse timeInterval:1.f];
+    [taskLoop run];
+    [PDTaskLoop registerTaskLoop:taskLoop forName:@"TestTaskLoop"];
+    
     return YES;
 }
 
