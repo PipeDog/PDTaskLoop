@@ -1,0 +1,16 @@
+PODS:
+  - PDTaskLoop (0.1.0)
+
+DEPENDENCIES:
+  - PDTaskLoop (from `../`)
+
+EXTERNAL SOURCES:
+  PDTaskLoop:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PDTaskLoop: f38ac19584c52dcfae110f1adc5acde27008db79
+
+PODFILE CHECKSUM: d4e44d4fe958c37b152d137932343d0cd73d5ab4
+
+COCOAPODS: 1.10.1
