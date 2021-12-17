@@ -1,7 +1,6 @@
 # PDTaskLoop
-<<<<<<< HEAD
+
 任务运行循环，采用队列 + 定时轮询的方式进行任务调度执行
-=======
 
 [![CI Status](https://img.shields.io/travis/liang/PDTaskLoop.svg?style=flat)](https://travis-ci.org/liang/PDTaskLoop)
 [![Version](https://img.shields.io/cocoapods/v/PDTaskLoop.svg?style=flat)](https://cocoapods.org/pods/PDTaskLoop)
@@ -30,4 +29,3 @@ liang, 1007279249@qq.com
 ## License
 
 PDTaskLoop is available under the MIT license. See the LICENSE file for more info.
->>>>>>> afe34a3a285600cccfbba57d7f5bf3319e93a081
