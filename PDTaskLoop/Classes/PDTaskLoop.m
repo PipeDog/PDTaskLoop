@@ -210,7 +210,7 @@
         return;
     }
     
-    [self.lock unlock];
+    [self.lock lock];
     NSArray<dispatch_block_t> *taskQueue = [self.taskQueue copy];
     [self.taskQueue removeAllObjects];
     [self.lock unlock];
