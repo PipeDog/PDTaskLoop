@@ -39,6 +39,16 @@
     });
 }
 
+- (IBAction)didClickRunButton:(id)sender {
+    PDTaskLoop *taskLoop = [PDTaskLoop taskLoopForName:@"TestTaskLoop"];
+    [taskLoop run];
+}
+
+- (IBAction)didClickShutdownButton:(id)sender {
+    PDTaskLoop *taskLoop = [PDTaskLoop taskLoopForName:@"TestTaskLoop"];
+    [taskLoop shutdown];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

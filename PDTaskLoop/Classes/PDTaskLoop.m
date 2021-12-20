@@ -134,6 +134,7 @@
 @property (nonatomic, strong) _PDLoopTimer *timer;
 @property (nonatomic, strong) NSLock *lock;
 @property (nonatomic, strong) NSMutableArray<dispatch_block_t> *taskQueue;
+@property (nonatomic, assign, getter=isRunning) BOOL running;
 
 @end
 
@@ -162,12 +163,13 @@
         _timeInterval = secs;
         _lock = [[NSLock alloc] init];
         _taskQueue = [NSMutableArray array];
+        _running = NO;
     }
     return self;
 }
 
 - (void)addTask:(dispatch_block_t)block {
-    if (!block) {
+    if (!block || !self.isRunning) {
         return;
     }
     
@@ -180,7 +182,7 @@
     if (self.timer) {
         return;
     }
-    
+        
     __weak typeof(self) weakSelf = self;
     self.timer = [[_PDLoopTimer alloc] initWithTimeInterval:self.timeInterval
                                                      leeway:0.01f
@@ -193,15 +195,17 @@
     }];
     
     [self.timer fire];
+    self.running = YES;
 }
 
 - (void)shutdown {
     if (!_timer) {
         return;
     }
-    
+        
     [_timer invalidate];
     _timer = nil;
+    self.running = NO;
 }
 
 #pragma mark - Private Methods
